@@ -340,6 +340,10 @@ export declare class PetService extends Service {
     announce(input: unknown): {
         ok: boolean;
     };
+    /** Accept only the versioned, privacy-safe attendance reminder contract. */
+    announceAttendanceReminder(input: unknown): {
+        ok: boolean;
+    };
     /**
      * The announcement slots still fresh, in render order. An expired entry
      * simply stops appearing (the client's 2 s poll drops it); no timer owns its

@@ -2,3 +2,10 @@ node_modules/
 coverage/
 .DS_Store
 *.log
+
+# Local build and package artifacts
+.tmp-build*/
+*.tgz
+*.tsbuildinfo
+pnpm-lock.yaml
+pnpm-workspace.yaml

@@ -17,6 +17,7 @@ import type { AssistantStreamFrame } from '@deepseek-ai/dsh-agent'
 import type { Session, SessionEvent } from '@deepseek-ai/dsh-session'
 import type { AffinityConfig, PetAffinityView, PetInteraction } from './affinity.ts'
 import { announcementFresh, MAX_ANNOUNCEMENTS, parseAnnouncement, type PetAnnouncement } from './announce.ts'
+import { parseAttendanceReminderEvent } from './attendance-reminder.ts'
 import type { TreatConfig } from './treats.ts'
 import {
   emptyProjectionRuntime,
@@ -503,6 +504,22 @@ export class PetService extends Service {
     }
     this.announcements.set(parsed.source, parsed)
     return { ok: true }
+  }
+
+  /** Accept only the versioned, privacy-safe attendance reminder contract. */
+  announceAttendanceReminder(input: unknown): { ok: boolean } {
+    const event = parseAttendanceReminderEvent(input)
+    if (event === undefined) return { ok: false }
+    const tone = event.priority === 'urgent' ? 'low' : event.priority === 'warning' ? 'warn' : 'ok'
+    return this.announce({
+      source: 'iepms-attendance',
+      kind: 'plan',
+      title: event.title,
+      percent: 100,
+      note: event.body,
+      tone,
+      ttlMs: Math.max(1000, Math.min(30 * 60 * 1000, Date.parse(event.expiresAt) - Date.now())),
+    })
   }
 
   /**

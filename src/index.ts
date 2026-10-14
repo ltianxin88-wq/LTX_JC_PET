@@ -32,6 +32,8 @@ export type {
   PetStatusBubbleMode,
 } from './service.ts'
 export { MAX_PANEL_ACTIONS, PanelActionRegistry, normalizePanelAction } from './panel-actions.ts'
+export { parseAttendanceReminderEvent } from './attendance-reminder.ts'
+export type { AttendanceReminderEventV1 } from './attendance-reminder.ts'
 export type {
   PetPanelActionContext,
   PetPanelActionHandler,

@@ -17,6 +17,8 @@ import { type PetDisplayConfig } from './persist.ts';
 export { PetService, MAX_SESSION_BUBBLES, DEFAULT_STATUS_BUBBLE_MODE, STATUS_BUBBLE_MODES, statusBubbleMode } from './service.ts';
 export type { PetConfig, PetInteractResult, PetSettingsSection, PetSessionView, PetStateView, PetStatusBubbleMode, } from './service.ts';
 export { MAX_PANEL_ACTIONS, PanelActionRegistry, normalizePanelAction } from './panel-actions.ts';
+export { parseAttendanceReminderEvent } from './attendance-reminder.ts';
+export type { AttendanceReminderEventV1 } from './attendance-reminder.ts';
 export type { PetPanelActionContext, PetPanelActionHandler, PetPanelActionRegistration, PetPanelActionView, } from './panel-actions.ts';
 export { AFFINITY_MAX, AFFINITY_RANKS, applyInteraction, applyTurnReward, emptyAffinity, rankOf, } from './affinity.ts';
 export type { AffinityConfig, AffinityState, InteractionOutcome, PetInteraction, } from './affinity.ts';
