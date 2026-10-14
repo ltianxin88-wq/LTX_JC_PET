@@ -15,8 +15,7 @@
     "build": "tsc -b && tsdown",
     "test": "vitest run",
     "pet:cli": "node scripts/dsh-pet.cjs",
-    "typecheck": "tsc -b --pretty false && tsc -p tsconfig.test.json --pretty false",
-    "prepare": "tsdown --config tsdown.prepare.config.ts"
+    "typecheck": "tsc -b --pretty false && tsc -p tsconfig.test.json --pretty false"
   },
   "main": "lib/index.js",
   "types": "lib/types/index.d.ts",
